@@ -5,6 +5,12 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3] - 2026-10-01
+
+### Changed
+
+- Skill `memnet-lite-design-first`: SysML v2 MBSE shape includes **behaviour** (`BEH`) plus optional `ACT` / `STA`, not only structure / reqs / connections. Invent behaviour with parts, requirements, and interconnection in the graph before code. Cross-refs in atomize, session, repo-snapshot, SSOT rule, README; plugin version **0.1.3**.
+
 ## [0.1.2] - 2026-10-01
 
 ### Added

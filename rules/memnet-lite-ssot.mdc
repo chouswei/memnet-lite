@@ -7,13 +7,13 @@ alwaysApply: true
 
 # MemNet Lite — design SSOT
 
-The **MemNet Lite session** (local `memnet-mcp` graph, read via `pin_map`) is the source of truth for **architecture, requirements, and decisions** for this repo.
+The **MemNet Lite session** (local `memnet-mcp` graph, read via `pin_map`) is the source of truth for **architecture, behaviour, requirements, and decisions** for this repo.
 
 Split (MUST keep both):
 
 | Layer | SSOT | What it owns |
 |-------|------|----------------|
-| **System design** | MemNet Lite session (pinned graph) | Parts, requirements, connections, claims, task state |
+| **System design** | MemNet Lite session (pinned graph) | Parts, behaviour, requirements, connections, claims, task state |
 | **Files** | Repo tree / git | Source, docs, PRs, plugin text |
 
 Code, docs, and PRs **trail** the graph: `pin_map` → `mutate` (sparse) → re-`pin_map` → then implement or edit files. Skill **memnet-lite-design-first** is the teach; **memnet-lite-session** is the loop.

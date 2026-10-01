@@ -18,7 +18,7 @@ If `memnet-lite` / `memnet-mcp` tools are **absent** from the catalog: skip this
 | Skill | When |
 |-------|------|
 | **memnet-lite-atomize** | Prose → short atoms; edges not id-lists; filter-out vs silent truncate; truncation marks |
-| **memnet-lite-design-first** | Invent `PKG`/`PRT`/`REQ`/`CON` in the graph **before** repo code (SysML v2 MBSE *ideas*, not SysMLEdge) |
+| **memnet-lite-design-first** | Invent `PKG`/`PRT`/`REQ`/`CON`/`BEH` (optional `ACT`/`STA`) in the graph **before** repo code (SysML v2 MBSE *ideas*, not SysMLEdge) |
 | **memnet-lite-repo-snapshot** | Bounded host `ingest_codebase`, then `pin_map`; MUST NOT paste trees into chat |
 
 Design SSOT: rule **memnet-lite-ssot** (graph = system design; git = files).

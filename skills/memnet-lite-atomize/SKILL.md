@@ -25,7 +25,7 @@ One **idea** per node. Membership is **edges**, not id-lists in properties. Fiel
 | `MOD` | one file | `path` |
 | `RUL` | one policy | `code` |
 
-Extend `session_open` `map_lines` **before** first mutate of a new kind. Schema is frozen at open. Design kinds (`PKG` / `PRT` / `REQ` / `CON` / `POR`): **memnet-lite-design-first**. Code index: **memnet-lite-repo-snapshot**.
+Extend `session_open` `map_lines` **before** first mutate of a new kind. Schema is frozen at open. Design kinds (`PKG` / `PRT` / `REQ` / `CON` / `POR` / `BEH` / `ACT` / `STA`): **memnet-lite-design-first**. Code index: **memnet-lite-repo-snapshot**.
 
 ## Prose → `mutate` wire
 
