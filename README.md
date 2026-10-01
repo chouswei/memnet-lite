@@ -1,8 +1,10 @@
 # MemNet Lite
 
-Solo-user **local memory graph** for Cursor. This repository is the public SSOT for the **plugin face**: MCP client wiring, one rule, one skill, one serve command. The **host** is PyPI [`memnet-llm[mcp]`](https://pypi.org/project/memnet-llm/) 0.19.x (`memnet-mcp`). This is not tip MemNet and not SysMLEdge.
+Solo-user **local memory graph** for Cursor. This repository is the public SSOT for the **plugin face**: MCP client wiring, rules, skills, one serve command. The **host** is PyPI [`memnet-llm[mcp]`](https://pypi.org/project/memnet-llm/) 0.19.x (`memnet-mcp`). This is not tip MemNet and not SysMLEdge.
 
-**Operator:** 衍跡 InkMirage (InkMirage). **Plugin:** `memnet-lite` **v0.1.1**. **Licence:** MIT.
+**Operator:** 衍跡 InkMirage (InkMirage). **Plugin:** `memnet-lite` **v0.1.2**. **Licence:** MIT.
+
+**SSOT split:** the MemNet Lite **session** (pinned graph) is source of truth for **system design** (architecture, requirements, decisions). **Git / the repo tree** is source of truth for **files**. Code and PRs trail the graph (`mutate` / `pin_map` first). Rule: `rules/memnet-lite-ssot.mdc`. **tip ≠ face**; not SysMLEdge.
 
 ## Architecture (plugin = face, memnet-llm = host)
 
@@ -10,7 +12,7 @@ Solo-user **local memory graph** for Cursor. This repository is the public SSOT 
 Cursor agent
   └─ this plugin (face)
        ├─ mcp.json          → python3 mcp/launch-memnet-mcp.py
-       ├─ rules / skills    → local-first loop
+       ├─ rules / skills    → local-first loop + design SSOT + teaches
        └─ commands          → optional local serve
             │
             ▼
@@ -64,7 +66,11 @@ See [mcp/README.md](mcp/README.md).
 
 1. Enable the plugin so Cursor starts `memnet-mcp` (namespace from server key `memnet-lite`).
 2. Follow skill **memnet-lite-session**: `serve_status` → `session_open` → `pin_map` under caps → `mutate`.
-3. Start a local serve only when workers must share one graph: command **start-local-memnet-serve**.
+3. Specialists (session skill stays thin glue):
+   - **memnet-lite-atomize** — short graph atoms; prose → `mutate` wire; truncation honesty.
+   - **memnet-lite-design-first** — invent structure in the graph before repo code (SysML v2 MBSE *ideas*, not SysMLEdge tools).
+   - **memnet-lite-repo-snapshot** — bounded host `ingest_codebase`, then `pin_map`; do not paste trees into chat.
+4. Start a local serve only when workers must share one graph: command **start-local-memnet-serve**.
 
 Goldfish loop on the host (do not invent stub tools):
 
@@ -100,7 +106,11 @@ mcp/README.md
 mcp/launch-memnet-mcp.py
 commands/start-local-memnet-serve.md
 rules/memnet-lite-local-first.mdc
+rules/memnet-lite-ssot.mdc
 skills/memnet-lite-session/SKILL.md
+skills/memnet-lite-atomize/SKILL.md
+skills/memnet-lite-design-first/SKILL.md
+skills/memnet-lite-repo-snapshot/SKILL.md
 ```
 
 GitHub for this SSOT is **this** public repository. Do not add Origin (Gitee/GitLab) mirrors from this tree.

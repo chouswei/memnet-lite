@@ -5,6 +5,18 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2026-10-01
+
+### Added
+
+- Skills `memnet-lite-atomize`, `memnet-lite-design-first`, `memnet-lite-repo-snapshot` (YAML `name` + `description`; under `skills/<slug>/SKILL.md`).
+- Rule `memnet-lite-ssot`: MemNet Lite session is SSOT for system design; git is SSOT for files. tip ≠ face; not SysMLEdge.
+
+### Changed
+
+- Skill `memnet-lite-session` is thin glue: loop + caps; hard teaches point at the three specialists.
+- README skill list and layout; plugin version **0.1.2**. Design-first states SysML v2 MBSE *ideas* (PKG/PRT/REQ/CON/POR), not SysMLEdge tools.
+
 ## [0.1.1] - 2026-10-01
 
 ### Changed

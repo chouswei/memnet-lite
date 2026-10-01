@@ -3,7 +3,8 @@ name: memnet-lite-session
 description: >-
   Local MemNet Lite session loop on memnet-llm[mcp]. Use when this plugin's
   memnet-lite MCP is in the catalog: health, session_open, pin_map under caps,
-  mutate with truncation honesty. Not tip MemNet. Not SysMLEdge.
+  mutate. Hard teaches: atomize, design-first, repo-snapshot. Not tip MemNet.
+  Not SysMLEdge.
 ---
 
 # MemNet Lite session (local host)
@@ -11,6 +12,16 @@ description: >-
 **Face:** this plugin (`memnet-lite`). **Host:** local `memnet-mcp` from `memnet-llm[mcp]` 0.19.x. **tip ≠ face.** If SysMLEdge tools are present, they are a different product — do not route model work through this skill.
 
 If `memnet-lite` / `memnet-mcp` tools are **absent** from the catalog: skip this loop; plain Markdown only. Do not invent tool calls.
+
+## Hard teaches (open the specialist — do not paste it here)
+
+| Skill | When |
+|-------|------|
+| **memnet-lite-atomize** | Prose → short atoms; edges not id-lists; filter-out vs silent truncate; truncation marks |
+| **memnet-lite-design-first** | Invent `PKG`/`PRT`/`REQ`/`CON` in the graph **before** repo code (SysML v2 MBSE *ideas*, not SysMLEdge) |
+| **memnet-lite-repo-snapshot** | Bounded host `ingest_codebase`, then `pin_map`; MUST NOT paste trees into chat |
+
+Design SSOT: rule **memnet-lite-ssot** (graph = system design; git = files).
 
 ## Loop
 
@@ -30,7 +41,7 @@ Call `serve_status` first.
 
 Open **this** operator's session. Schema is frozen at open. Missing map → `no_map`. Unknown kind → `unknown_tag`.
 
-Pass `map_lines` covering at least `CLM`, `TSK`, `USR`, `SYM` (extend before first mutate if you will write more kinds):
+Pass `map_lines` covering at least `CLM`, `TSK`, `USR`, `SYM` (extend before first mutate if you will write more kinds — design-first and repo-snapshot list theirs):
 
 ```text
 SCHEMA CLM ; fields=type code recycle
@@ -55,29 +66,15 @@ If the ego is unknown: `find` (hard `limit`) then `pin_map` from labels+properti
 
 Drop the prior map from the next prompt. Product read is `pin_map`. leftover `query_warm` is leftover.
 
-**Truncation honesty (MUST):**
+**Truncation:** when stdout includes `## Truncation truncated=true`, the Shape is **incomplete**. Tighten cue. Grain and filter-out: **memnet-lite-atomize**. MUST NOT soften `max_rows` to hide the clip. Shaped emit MUST NOT be read as identity via `hid` / `_memnet_hid` / `elementId`. Nickname property `id` is not GraphElement identity.
 
-- When a hard cap clips ShapeWalk, stdout includes `## Truncation truncated=true M=… omitted=… reason=…`.
-- Treat that Shape as **incomplete**. Tighten cue / filter / scope. MUST NOT claim a complete extract. MUST NOT soften engine `max_rows` to hide the clip.
-- When the offer fits, the mark is absent.
-- Shaped emit MUST NOT be read as identity via `hid` / `_memnet_hid` / `elementId`. Nickname property `id` is not GraphElement identity.
-
-CueConflict (`|Q|>1`): do not pick a root at random; retarget the cue. MUST NOT mutate a foreign neighbourhood.
+CueConflict (`|Q|>1`): retarget the cue. MUST NOT mutate a foreign neighbourhood.
 
 ### 4. `mutate`
 
-Product write: `mutate` with `wire_lines` (openCypher-shaped CREATE / MATCH / SET / DELETE). leftover `add` / `update` wrap the same envelope — do not teach them as TARGET.
+Product write: `mutate` with `wire_lines` (openCypher-shaped CREATE / MATCH / SET / DELETE). leftover `add` / `update` wrap the same envelope — do not teach them as TARGET. Atom shape and membership: **memnet-lite-atomize**. Then `pin_map` again.
 
-```cypher
-CREATE (t:TSK {goal: 'Remember local host pin', status: 'in_progress', recycle: 'persistent'})
-CREATE (c:CLM {type: 'decision', code: 'plugin is face; memnet-llm is host', recycle: 'persistent'})
-MATCH (c:CLM {code: 'plugin is face; memnet-llm is host'}), (t:TSK {goal: 'Remember local host pin'})
-CREATE (c)-[:documents]->(t)
-```
-
-Copy locators from the last `pin_map`. Short atoms. Membership is edges, not id-lists. Then `pin_map` again.
-
-After persistent CLM / USR / SYM / TSK facts, `session_save` to a new dated file when durability is needed.
+Copy locators from the last `pin_map`. After persistent CLM / USR / SYM / TSK facts, `session_save` to a new dated file when durability is needed. Handoff is `session_id` plus a fresh `pin_map`.
 
 ## Caps (Lite)
 
@@ -85,7 +82,7 @@ After persistent CLM / USR / SYM / TSK facts, `session_save` to a new dated file
 |---------|----------------|
 | `depth` | 2 unless the slice is too thin |
 | `max_rows` | 50 unless the operator raises it; cap stays **hard** |
-| Truncation mark | incomplete Shape; re-cue |
+| Truncation mark | incomplete Shape; re-cue (**memnet-lite-atomize**) |
 | `housekeep_stats` | counts only; do not prune a mutate-maintained catalog as "orphans" |
 
 ## MUST NOT
@@ -95,3 +92,4 @@ After persistent CLM / USR / SYM / TSK facts, `session_save` to a new dated file
 - Require marketplace secrets. `MEMNET_IPC_SOCKET` is optional operator IPC.
 - Claim host **1.0**. Pin `memnet-llm` 0.19.x.
 - Put the graph in chat; handoff is `session_id` plus a fresh `pin_map`.
+- Duplicate the three specialist teaches in this file.

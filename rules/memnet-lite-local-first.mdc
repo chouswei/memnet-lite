@@ -23,3 +23,5 @@ MUST NOT:
 - Claim MemNet **1.0**. Host pin is PyPI `memnet-llm` **0.19.x**.
 - Teach leftover `add` / `update` / `query_warm` as the product write/read.
 - Cite LAN hosts, `:18766`, or a skill URL as this plugin's live face. Live face is stdio from `mcp.json` (`python3` + `mcp/launch-memnet-mcp.py` → host `memnet-mcp`).
+
+Design vs files SSOT: `rules/memnet-lite-ssot.mdc`.
