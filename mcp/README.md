@@ -6,24 +6,11 @@ This directory is **Cursor wiring**, not a graph engine. Graph tools come from t
 
 ## Preferred launch (what `mcp.json` uses)
 
-Install the host, then let Cursor run the console script:
+Install the host, then let Cursor run the plugin launcher:
 
 ```bash
 pip install 'memnet-llm[mcp]>=0.19,<0.20'
-# mcp.json: { "command": "memnet-mcp" }
 ```
-
-Default transport is **stdio in-process**. A solo Cursor agent does not need `memnet serve`.
-
-## Fallback: uvx
-
-If `memnet-mcp` is not on `PATH`:
-
-```bash
-uvx --from 'memnet-llm[mcp]' memnet-mcp
-```
-
-`launch-memnet-mcp.py` tries PATH, then that `uvx` line, then **exits 127**. Point Cursor at it only when the direct command is unavailable:
 
 ```json
 {
@@ -36,7 +23,18 @@ uvx --from 'memnet-llm[mcp]' memnet-mcp
 }
 ```
 
-`${CURSOR_PLUGIN_ROOT}` is expanded by Cursor. Do not invent `${PLUGIN_ROOT}`.
+`${CURSOR_PLUGIN_ROOT}` is the Cursor plugin convention (install path). Cursor expands it in `command`, `args`, `env`, and `cwd`. It does **not** expand the Agent Plugins `${PLUGIN_ROOT}` token in `mcp.json`.
+
+`launch-memnet-mcp.py` tries `memnet-mcp` on `PATH`, then `uvx --from 'memnet-llm[mcp]' memnet-mcp`, then **exits 127**. Default transport is **stdio in-process**. A solo Cursor agent does not need `memnet serve`.
+
+## Alternate: PATH `memnet-mcp`
+
+If the operator already has the console script on `PATH`, they may launch it directly (private MCP entry or a shell), instead of the plugin default:
+
+```bash
+memnet-mcp
+# or: uvx --from 'memnet-llm[mcp]' memnet-mcp
+```
 
 ## Optional operator IPC (not a plugin secret)
 
