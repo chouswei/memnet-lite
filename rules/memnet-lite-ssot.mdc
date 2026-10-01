@@ -1,0 +1,30 @@
+---
+description: >-
+  MemNet Lite pinned session is SSOT for this repo's system design.
+  Git is SSOT for files. tip ≠ face. Not SysMLEdge.
+alwaysApply: true
+---
+
+# MemNet Lite — design SSOT
+
+The **MemNet Lite session** (local `memnet-mcp` graph, read via `pin_map`) is the source of truth for **architecture, requirements, and decisions** for this repo.
+
+Split (MUST keep both):
+
+| Layer | SSOT | What it owns |
+|-------|------|----------------|
+| **System design** | MemNet Lite session (pinned graph) | Parts, requirements, connections, claims, task state |
+| **Files** | Repo tree / git | Source, docs, PRs, plugin text |
+
+Code, docs, and PRs **trail** the graph: `pin_map` → `mutate` (sparse) → re-`pin_map` → then implement or edit files. Skill **memnet-lite-design-first** is the teach; **memnet-lite-session** is the loop.
+
+MUST:
+
+- Land design in the session (`mutate`) so a later `pin_map` can recover it.
+- Treat a truncated pin (`## Truncation truncated=true`) as incomplete design, not as a licence to invent in chat.
+
+MUST NOT:
+
+- Invent a parallel design only in Markdown, chat, or a PR body that never lands in MemNet.
+- Treat README / `AGENTS.md` / comments as the architecture SSOT when a live session exists.
+- Substitute **tip** MemNet or **SysMLEdge** (`propose` / `rev_status` / `gql` on `sysmledge`) for this local face. **tip ≠ face.**
