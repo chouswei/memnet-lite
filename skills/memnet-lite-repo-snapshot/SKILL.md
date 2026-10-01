@@ -53,6 +53,6 @@ Empty cue = session outline. CueConflict (`|Q|>1`): retarget; do not pick a root
 
 - Paste whole trees, `find` dumps, or ingest stdout into chat as the working set.
 - Soften caps to hide truncation.
-- Treat ingest as a substitute for grep/LSP or for design-first (`PKG`/`PRT`/`REQ`/`BEH` and siblings).
+- Treat ingest as a substitute for grep/LSP or for design-first (triad **requirements, structures, behaviours**).
 - Call SysMLEdge `propose` / `rev_status` / `gql`, or tip MemNet, as this snapshot path.
 - Invent fake ingest tools. Host pin is `memnet-llm` **0.19.x**.

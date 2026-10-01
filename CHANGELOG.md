@@ -5,6 +5,12 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - 2026-10-01
+
+### Changed
+
+- Skill `memnet-lite-design-first`: SysML v2 principles taught as the triad **requirements, structures, behaviours** (`REQ`; `PKG`/`PRT`/`POR`/`CON`; `BEH` with optional `ACT`/`STA`). Ports and connections stay under structures (interconnection), not a fourth peer pillar. Cross-refs in session, atomize, repo-snapshot, SSOT rule, README; plugin version **0.1.4**.
+
 ## [0.1.3] - 2026-10-01
 
 ### Changed
