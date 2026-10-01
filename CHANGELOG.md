@@ -5,6 +5,17 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-10-01
+
+### Changed
+
+- Marketplace manifest parity with Endleaf: `minClientVersions`, InkMirage author + email, `logo`, `category` / `tags` / `keywords`, explicit `mcpServers` and `skills` paths. Author name is English **InkMirage** only (no `variables` / secrets).
+- Default `mcp.json` launches `python3` + `${CURSOR_PLUGIN_ROOT}/mcp/launch-memnet-mcp.py` (PATH `memnet-mcp` then `uvx`; exit 127 if missing). PATH `memnet-mcp` remains a documented alternate.
+
+### Added
+
+- `assets/logo.svg` marketplace mark (abstract graph / memory; not the Endleaf logo).
+
 ## [0.1.0] - 2026-10-01
 
 ### Added

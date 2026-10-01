@@ -1,7 +1,8 @@
 {
   "mcpServers": {
     "memnet-lite": {
-      "command": "memnet-mcp"
+      "command": "python3",
+      "args": ["${CURSOR_PLUGIN_ROOT}/mcp/launch-memnet-mcp.py"]
     }
   }
 }

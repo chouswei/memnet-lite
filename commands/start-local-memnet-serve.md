@@ -5,7 +5,7 @@ description: Start optional local memnet-llm IPC serve for MemNet Lite. Solo def
 
 # Start local MemNet serve (optional)
 
-MemNet Lite's Cursor face (`mcp.json`) runs **`memnet-mcp`** in-process. That is enough for a single agent. Start a local serve only when several local processes must share one graph.
+MemNet Lite's Cursor face (`mcp.json`) launches `mcp/launch-memnet-mcp.py`, which execs **`memnet-mcp`** in-process. That is enough for a single agent. Start a local serve only when several local processes must share one graph.
 
 ## Host
 

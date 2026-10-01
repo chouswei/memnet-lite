@@ -2,14 +2,14 @@
 
 Solo-user **local memory graph** for Cursor. This repository is the public SSOT for the **plugin face**: MCP client wiring, one rule, one skill, one serve command. The **host** is PyPI [`memnet-llm[mcp]`](https://pypi.org/project/memnet-llm/) 0.19.x (`memnet-mcp`). This is not tip MemNet and not SysMLEdge.
 
-**Operator:** 衍跡 InkMirage (InkMirage). **Plugin:** `memnet-lite` **v0.1.0**. **Licence:** MIT.
+**Operator:** 衍跡 InkMirage (InkMirage). **Plugin:** `memnet-lite` **v0.1.1**. **Licence:** MIT.
 
 ## Architecture (plugin = face, memnet-llm = host)
 
 ```text
 Cursor agent
   └─ this plugin (face)
-       ├─ mcp.json          → stdio command memnet-mcp
+       ├─ mcp.json          → python3 mcp/launch-memnet-mcp.py
        ├─ rules / skills    → local-first loop
        └─ commands          → optional local serve
             │
@@ -49,13 +49,16 @@ Python ≥ 3.11. Confirm:
 command -v memnet-mcp
 ```
 
-If `memnet-mcp` is not on `PATH`, use the documented fallback:
+`mcp.json` launches the host via `python3` + `${CURSOR_PLUGIN_ROOT}/mcp/launch-memnet-mcp.py` (Cursor plugin root; Cursor does not expand `${PLUGIN_ROOT}` in `mcp.json`). The launcher execs `memnet-mcp` from `PATH`, then `uvx --from 'memnet-llm[mcp]' memnet-mcp`, and **exits 127** when both are missing.
+
+**Alternate** (operator shell or a private, untracked MCP entry): run the console script on `PATH` yourself:
 
 ```bash
-uvx --from 'memnet-llm[mcp]' memnet-mcp
+memnet-mcp
+# or: uvx --from 'memnet-llm[mcp]' memnet-mcp
 ```
 
-`mcp.json` prefers the **direct** command `memnet-mcp`. `mcp/launch-memnet-mcp.py` execs PATH then that `uvx` line and **exits 127** when both are missing. See [mcp/README.md](mcp/README.md).
+See [mcp/README.md](mcp/README.md).
 
 ## Use
 
@@ -87,6 +90,7 @@ Use MemNet Lite when the agent must **pin a neighbourhood and commit sparse grap
 
 ```text
 .cursor-plugin/plugin.json
+assets/logo.svg
 .gitignore
 CHANGELOG.md
 LICENSE
