@@ -1,0 +1,25 @@
+# Local Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Operator local state (not plugin secrets)
+.env
+.env.*
+!.env.example
+auth_config.json
+secrets/
+*.sock
+.memnet/
+*.memnet-snapshot*
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

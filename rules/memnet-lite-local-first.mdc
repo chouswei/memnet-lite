@@ -1,0 +1,25 @@
+---
+description: MemNet Lite is a local Cursor face over memnet-llm. tip ≠ face. Not SysMLEdge. No plugin secrets.
+alwaysApply: true
+---
+
+# MemNet Lite — local first
+
+This plugin is the **solo-user local face**. The **host** is local `memnet-llm[mcp]` (`memnet-mcp`).
+
+MUST:
+
+- Call the real host tools (`serve_status`, `session_open`, `pin_map`, `mutate`, …). MUST NOT invent stub graph tools.
+- Prefer in-process `memnet-mcp` for a single agent. Optional `memnet serve --ipc` is operator-local only (`MEMNET_IPC_SOCKET` is a socket path, not a marketplace secret).
+- Keep **tip ≠ face**: do not treat tip MemNet (house HTTP MCP / historical `memnet-pi`) as this face, and do not treat this face as that tip.
+- Keep SysMLEdge separate: product face `sysmledge` (`rev_status` / `ask` / `gql` / `propose`) is not MemNet Lite.
+- Honour `pin_map` caps and truncation: if emit has `## Truncation truncated=true`, the Shape is incomplete.
+- Pass `session=` on every MemNet tool except `serve_status`.
+
+MUST NOT:
+
+- Substitute this plugin for SysMLEdge or for tip MemNet.
+- Write tokens, passwords, or marketplace secrets into tracked plugin files.
+- Claim MemNet **1.0**. Host pin is PyPI `memnet-llm` **0.19.x**.
+- Teach leftover `add` / `update` / `query_warm` as the product write/read.
+- Cite LAN hosts, `:18766`, or a skill URL as this plugin's live face. Live face is stdio `memnet-mcp` from `mcp.json`.

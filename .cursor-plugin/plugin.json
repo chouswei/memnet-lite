@@ -1,0 +1,21 @@
+{
+  "name": "memnet-lite",
+  "displayName": "MemNet Lite",
+  "version": "0.1.0",
+  "description": "Solo-user local memory graph for Cursor: MCP client face over a local memnet-llm host. Not tip MemNet, not SysMLEdge.",
+  "author": {
+    "name": "衍跡 InkMirage"
+  },
+  "publisher": "InkMirage",
+  "homepage": "https://github.com/chouswei/memnet-lite",
+  "repository": "https://github.com/chouswei/memnet-lite",
+  "license": "MIT",
+  "keywords": [
+    "memnet",
+    "memory",
+    "graph",
+    "mcp",
+    "working-memory",
+    "local"
+  ]
+}

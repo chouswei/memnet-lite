@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "memnet-lite": {
+      "command": "memnet-mcp"
+    }
+  }
+}
