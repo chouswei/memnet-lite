@@ -10,7 +10,7 @@ This plugin is the **solo-user local face**. The **host** is local `memnet-llm[m
 MUST:
 
 - Call the real host tools (`serve_status`, `session_open`, `pin_map`, `mutate`, …). MUST NOT invent stub graph tools.
-- Prefer in-process `memnet-mcp` for a single agent. Optional `memnet serve --ipc` is operator-local only (`MEMNET_IPC_SOCKET` is a socket path, not a marketplace secret).
+- Prefer in-process `memnet-mcp` for a single agent. Optional `memnet serve --ipc` is operator-local only (`MEMNET_IPC_SOCKET` is a socket path, not a marketplace secret). Multitask / parallel workers that share one graph: that shared serve (skill **memnet-lite-multitask**); in-process remains OK for solo.
 - Keep **tip ≠ face**: do not treat tip MemNet (house HTTP MCP / historical `memnet-pi`) as this face, and do not treat this face as that tip.
 - Keep SysMLEdge separate: product face `sysmledge` (`rev_status` / `ask` / `gql` / `propose`) is not MemNet Lite.
 - Honour `pin_map` caps and truncation: if emit has `## Truncation truncated=true`, the Shape is incomplete.

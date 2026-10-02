@@ -5,6 +5,14 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.5] - 2026-10-02
+
+### Added
+
+- Skills `memnet-lite-async-checkpoint` (multi-wave Bind → one background worker per disjoint atom → end turn → checkpoint) and `memnet-lite-multitask` (shared local session under parallel Task workers; in-process OK for solo).
+- Rule `memnet-lite-multitask` (`alwaysApply: false`): Multitask / Task sub-agents → those skills; else single-agent goldfish via `memnet-lite-session` / local-first.
+- Session hard-teaches, README skill list, plugin version **0.1.5**. Host pin remains `memnet-llm` **0.19.x**. tip ≠ face; not SysMLEdge.
+
 ## [0.1.4] - 2026-10-01
 
 ### Changed

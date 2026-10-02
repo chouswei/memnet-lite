@@ -1,0 +1,38 @@
+---
+description: >-
+  When Cursor Multitask Mode is on or Task sub-agents are active: shared
+  MemNet Lite session on local serve. Open memnet-lite-multitask (and
+  memnet-lite-async-checkpoint for waves). Else single-agent goldfish via
+  memnet-lite-session / local-first.
+alwaysApply: false
+---
+
+# MemNet Lite under Multitask Mode
+
+**WHEN** Multitask Mode is on, or Task / background sub-agents are active:
+open and follow **memnet-lite-multitask**. For multi-wave spawn / checkpoint,
+also open **memnet-lite-async-checkpoint**.
+
+**ELSE** (single-agent): **memnet-lite-session** / **memnet-lite-local-first**.
+In-process MCP is OK.
+
+## Transport (one-liner)
+
+Shared **local** serve under Multitask (`memnet serve` IPC / `MEMNET_IPC_SOCKET`,
+or local HTTP bridged to that serve — command **start-local-memnet-serve**).
+In-process is OK for solo. MUST NOT use isolated in-process MCP per worker.
+MUST NOT use tip MemNet.
+
+## Parent / worker
+
+Parent: one `session_open` / `session_load`; pass `session=` in every worker
+prompt; mint/settle `TSK_*` / `USR_*` from `pin_map` not chat; after Bind-ready
+spawn one background worker per disjoint atom; end the turn; next turn
+`pin_map` first.
+
+Worker: parent's session; `pin_map` first; mutate only the assigned subgraph;
+MUST NOT invent parent ids or settle parent `TSK_*` / `USR_*` unless delegated.
+
+Overlapping writes: serialise. Do not assume ACL / RSV is productized.
+
+Chat is never mission SSOT. **tip ≠ face.** Not SysMLEdge.
