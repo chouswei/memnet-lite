@@ -2,7 +2,7 @@
 
 Solo-user **local memory graph** for Cursor. This repository is the public SSOT for the **plugin face**: MCP client wiring, rules, skills, one serve command. The **host** is PyPI [`memnet-llm[mcp]`](https://pypi.org/project/memnet-llm/) 0.19.x (`memnet-mcp`). This is not tip MemNet and not SysMLEdge.
 
-**Operator:** 衍跡 InkMirage (InkMirage). **Plugin:** `memnet-lite` **v0.1.4**. **Licence:** MIT.
+**Operator:** InkMirage. **Plugin:** `memnet-lite` **v0.1.5**. **Licence:** MIT.
 
 **SSOT split:** the MemNet Lite **session** (pinned graph) is source of truth for **system design** (requirements, structures, behaviours, decisions). **Git / the repo tree** is source of truth for **files**. Code and PRs trail the graph (`mutate` / `pin_map` first). Rule: `rules/memnet-lite-ssot.mdc`. **tip ≠ face**; not SysMLEdge.
 
@@ -70,6 +70,8 @@ See [mcp/README.md](mcp/README.md).
    - **memnet-lite-atomize** — short graph atoms; prose → `mutate` wire; truncation honesty.
    - **memnet-lite-design-first** — invent **requirements, structures, behaviours** in the graph before repo code (SysML v2 MBSE *principles*: `REQ`; `PKG`/`PRT`/`POR`/`CON`; `BEH` — not SysMLEdge tools). Ports/connections stay under structures.
    - **memnet-lite-repo-snapshot** — bounded host `ingest_codebase`, then `pin_map`; do not paste trees into chat.
+   - **memnet-lite-multitask** — shared local session when Multitask / parallel Task workers share one graph (local `memnet serve`, not isolated in-process).
+   - **memnet-lite-async-checkpoint** — multi-wave: Bind-ready atoms, one background worker per disjoint atom, end turn, checkpoint.
 4. Start a local serve only when workers must share one graph: command **start-local-memnet-serve**.
 
 Goldfish loop on the host (do not invent stub tools):
@@ -107,10 +109,15 @@ mcp/launch-memnet-mcp.py
 commands/start-local-memnet-serve.md
 rules/memnet-lite-local-first.mdc
 rules/memnet-lite-ssot.mdc
+rules/memnet-lite-multitask.mdc
 skills/memnet-lite-session/SKILL.md
 skills/memnet-lite-atomize/SKILL.md
 skills/memnet-lite-design-first/SKILL.md
 skills/memnet-lite-repo-snapshot/SKILL.md
+skills/memnet-lite-multitask/SKILL.md
+skills/memnet-lite-async-checkpoint/SKILL.md
+skills/memnet-lite-async-checkpoint/references/atom-and-wave.md
+skills/memnet-lite-async-checkpoint/references/roles.md
 ```
 
 GitHub for this SSOT is **this** public repository. Do not add Origin (Gitee/GitLab) mirrors from this tree.

@@ -3,8 +3,8 @@ name: memnet-lite-session
 description: >-
   Local MemNet Lite session loop on memnet-llm[mcp]. Use when this plugin's
   memnet-lite MCP is in the catalog: health, session_open, pin_map under caps,
-  mutate. Hard teaches: atomize, design-first, repo-snapshot. Not tip MemNet.
-  Not SysMLEdge.
+  mutate. Hard teaches: atomize, design-first, repo-snapshot; multitask /
+  multi-wave when parallel workers. Not tip MemNet. Not SysMLEdge.
 ---
 
 # MemNet Lite session (local host)
@@ -20,6 +20,8 @@ If `memnet-lite` / `memnet-mcp` tools are **absent** from the catalog: skip this
 | **memnet-lite-atomize** | Prose → short atoms; edges not id-lists; filter-out vs silent truncate; truncation marks |
 | **memnet-lite-design-first** | Invent the triad **requirements, structures, behaviours** (`REQ`; `PKG`/`PRT`/`POR`/`CON`; `BEH`, optional `ACT`/`STA`) in the graph **before** repo code (SysML v2 MBSE *principles*, not SysMLEdge). Ports/connections stay under structures. |
 | **memnet-lite-repo-snapshot** | Bounded host `ingest_codebase`, then `pin_map`; MUST NOT paste trees into chat |
+| **memnet-lite-multitask** | Multitask Mode / parallel Task workers that share one graph — local shared serve, not isolated in-process |
+| **memnet-lite-async-checkpoint** | Multi-wave: Bind-ready atoms, one background worker per disjoint atom, end turn, checkpoint |
 
 Design SSOT: rule **memnet-lite-ssot** (graph = system design; git = files).
 
